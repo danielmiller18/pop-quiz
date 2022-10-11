@@ -1,35 +1,35 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
-:root{
+:root {
     --primary-color: #2daaf2;
-    --secondary-color: #236165 ;
+    --secondary-color: #236165;
     --tertiary-color: rgb(185, 185, 185);
     --white-color: white;
     --correct-color: #43d145;
 }
 
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
     width: 60%;
     margin: 0 auto;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.centered{
+.centered {
     text-align: center;
 }
 
-header{
+header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -37,31 +37,31 @@ header{
 }
 
 
-.scores a,  .timer{
+.scores a,
+.timer {
     font-size: 20px;
 }
 
-.scores a{
+.scores a {
     color: var(--secondary-color);
     cursor: pointer;
-
 }
 
-.scores a:hover{
+.scores a:hover {
     color: var(--tertiary-color);
 }
 
 
-.start-quiz{
+.start-quiz {
     text-align: center;
 }
 
 
-h1{
+h1 {
     margin-bottom: 10px;
 }
 
-h2{
+h2 {
     color: var(--tertiary-color);
 
     border-top: 1px solid var(--tertiary-color);
@@ -70,7 +70,7 @@ h2{
     text-align: center;
 }
 
-.btn-grid{
+.btn-grid {
     display: grid;
     grid-template-columns: repeat(1, auto);
     gap: 10px;
@@ -78,7 +78,7 @@ h2{
     justify-items: center;
 }
 
-button{
+button {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
     border: none;
@@ -91,39 +91,36 @@ button{
     margin: 10px;
     color: var(--white-color);
     cursor: pointer;
-
-
 }
 
 
-button:hover{
+button:hover {
     background-color: var(--secondary-color);
 }
 
 
-.hide{
+.hide {
     display: none;
 }
 
-.btn.correct{
+.btn.correct {
     background-color: var(--correct-color);
-
 }
 
 
-.btn.wrong{
+.btn.wrong {
     background-color: var(--tertiary-color);
 }
 
 
-.controls{
+.controls {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 10px 0;
 }
 
-input[type="text"]{
+input[type="text"] {
     padding: 10px;
     margin: 8px 0;
     border: 1px solid var(--tertiary-color);
@@ -131,20 +128,21 @@ input[type="text"]{
     box-sizing: border-box;
 }
 
-.highscore{
+.highscore {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
 }
 
-.name-div, .score-div{
+.name-div,
+.score-div {
     flex: 1 35%;
     padding: 10px 0;
     border: 1px solid var(--correct-color);
 }
 
-@media screen and (max-width: 575px){
-    .btn-grid{
+@media screen and (max-width: 575px) {
+    .btn-grid {
         grid-template-columns: repeat(1, auto);
         gap: 0;
         margin: 0;
