@@ -52,7 +52,6 @@ function startGame(){
     startContainerEl.classList.add("hide");
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0;
-    debugger;
     questionContainerEl.classList.remove("hide");
 
     // // timer will start as soon as the btn is clicked
@@ -73,6 +72,106 @@ function setNextQuestion(){
 function showQuestion(question){
     questionEl.innerText = question.question
     question.answers.forEach(answer => {
+        var button = document.createElement("button")
+        button.innerText = answer.text
+        button.classList.add("btn")
+
+        if(answer.correct){
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener("click", selectAnswer)
+        answerButtonsEl.appendChild(button)
 
     })
 }
+
+
+// this function will reset the state of the program
+function resetState(){
+    nextButton.classList.add("hide")
+    checkAnswerEl.classList.add("hide")
+    while(answerButtonsEl.firstChild){
+        answerButtonsEl.removeChild(answerButtonsEl.firstChild)
+    }
+
+}
+
+ // Select answer 
+ function selectAnswer(e){
+    var selectedButton = e.target;
+
+    var correct = selectedButton.dataset.correct;
+    checkAnswerEl.classList.remove("hide")
+
+    // check if the answer is correct or wrong then show the corresponding text
+    if(correct){
+        checkAnswerEl.innerHTML = "You got it correct! :)"
+    } else{
+        checkAnswerEl.innerHTML = "Sorry that wrong!!!! :("
+        if(timeLeft <= 10){ // needs to be fixed
+            timeLeft = 0
+        } else{
+            // if the answer is wrong then we will deduct 10 seconds from the time
+            // timeLeft -= 10;
+            timeLeft = timeLeft - 10
+        }
+    }
+
+
+    Array.from(answerButtonsEl.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
+    if(shuffledQuestions.length > currentQuestionIndex + 1){
+        nextButton.classList.remove("hide")
+        checkAnswerEl.classList.remove("hide")
+    } else{
+        startButton.classList.remove("hide")
+        saveScore();
+    }
+
+ }
+
+ // add colors to the buttons
+
+ function setStatusClass(element, correct){
+    clearStatusClass(element)
+    if(correct){
+        element.classList.add("correct");
+
+    } else {
+        element.classList.add("wrong")
+    }
+ }
+
+
+ function clearStatusClass(element){
+    element.classList.remove("correct");
+    element.classList.remove("wrong")
+ };
+
+ // save scores
+ function saveScore(){
+    clearInterval(timerID);
+    timerEl.textContent = "Time: " + timeLeft;
+    setTimeout(function(){
+        questionContainerEl.classList.add("hide");
+        document.getElementById("score-container").classList.remove("hide");
+        document.getElementById("your-score").textContent = "Your final score is " + timeLeft
+    }, 2000) 
+
+ };
+
+
+ var loadScores = function(){
+     // get score from the local storage
+
+     if(savedScores){
+        return false;
+     }
+
+     // Convert scores from string into array format
+
+ }
+ 
+
+
